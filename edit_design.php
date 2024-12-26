@@ -147,7 +147,10 @@ if (isset($_POST['update'])) {
                                     name="postalCode" value="<?php echo $result['pincode']; ?>">
                             </div>
                             <div class="col-12 col-md-6 mt-3">
-                                <input type="text" class="form-control" placeholder="State" name="state" value="<?php echo $result['state']; ?>">
+                                <!-- <input type="text" class="form-control" placeholder="State" name="state" required> -->
+                                <select id="state" class="form-select" name="state" required>
+                                    <option value="" selected disabled>Choose a state</option>
+                                </select>
                             </div>
                         </div>
                 </section>
@@ -263,19 +266,13 @@ if (isset($_POST['update'])) {
         const countrySelect = document.getElementById('country');
         const stateSelect = document.getElementById('state');
 
-        const ccountrySelect = document.getElementById('cCountry');
-        const cstateSelect = document.getElementById('cState');
-
 
         countrySelect.addEventListener('change', changeState);
-        ccountrySelect.addEventListener('change', changeState);
 
         function changeState() {
             var selectedCountry = countrySelect.value;
-            var cselectedCountry = ccountrySelect.value;
 
             stateSelect.innerHTML = '<option value="" selected disabled>Choose a state</option>';
-            cstateSelect.innerHTML = '<option value="" selected disabled>Choose a state</option>';
 
             if (statesByCountry[selectedCountry]) {
                 for (var i = 0; i < statesByCountry[selectedCountry].length; i++) {
@@ -284,15 +281,6 @@ if (isset($_POST['update'])) {
                     option.value = state;
                     option.textContent = state;
                     stateSelect.appendChild(option);
-                }
-            }
-            if (statesByCountry[cselectedCountry]) {
-                for (var i = 0; i < statesByCountry[cselectedCountry].length; i++) {
-                    var cstate = statesByCountry[cselectedCountry][i];
-                    var coption = document.createElement('option');
-                    coption.value = cstate;
-                    coption.textContent = cstate;
-                    cstateSelect.appendChild(coption);
                 }
             }
         }
