@@ -94,11 +94,9 @@ if (isset($_POST['update'])) {
                                     name="cpincode" value="<?php echo $result['pincode']; ?>" required oninput="pincodeValidation(this)">
                             </div>
                             <div class="col-12 col-md-6 mt-3">
-                                <!-- <input type="text" class="form-control" placeholder="State" name="state" required> -->
-                                <select id="cState" class="form-select" name="cState" >
-                                    <option value="<?php echo $result['state']; ?>" selected disabled>Choose a state</option>
-                                </select>
+                                <input type="text" class="form-control" placeholder="State" name="state" required value="<?php echo $result['state']; ?>">
                             </div>
+                            
                             <br>
                             <br>
                             <br>
